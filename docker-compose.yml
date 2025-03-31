@@ -3,7 +3,7 @@ version: '3.8'
 services:
     app:
         build:
-            context: ./php
+            context: ./
         container_name: laravel-app
         volumes:
             - ./:/var/www/html
