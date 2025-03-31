@@ -20,6 +20,7 @@
             <label for="email" class="block mb-1 font-semibold">e-mail</label>
             <input
                 id="email"
+                name="email"
                 type="email"
                 placeholder="Digite seu e-mail"
                 class="w-full mb-4 border rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-200"
@@ -28,6 +29,7 @@
             <label for="password" class="block mb-1 font-semibold">senha</label>
             <input
                 id="password"
+                name="password"
                 type="password"
                 placeholder="Digite sua senha"
                 class="w-full mb-4 border rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-200"
@@ -36,6 +38,7 @@
             <div class="flex items-center mb-4">
                 <input
                     id="remember"
+                    name="remember"
                     type="checkbox"
                     class="mr-2 focus:ring-0"
                 />
