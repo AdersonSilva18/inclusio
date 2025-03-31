@@ -17,9 +17,9 @@
                     .inClusio
                 </h1>
                 <div id="nav-links" class="flex space-x-4 text-2xl">
-                    <a href="#">cadastre-se</a>
+                    <a href="{{route('register')}}">cadastre-se</a>
                     <div id="vertical-bar"></div>
-                    <a href="#">login</a>
+                    <a href="{{route('login')}}">login</a>
                 </div>
             </div>
         </nav>
