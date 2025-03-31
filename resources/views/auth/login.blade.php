@@ -13,7 +13,7 @@
 </header>
 
 <main class="flex-grow flex items-center justify-center">
-    <div class="border rounded-md max-w-sm w-full p-6 shadow-md">
+    <div class="border rounded-md max-w-sm w-full p-6 shadow-md border-black">
         <h2 class="text-center text-lg font-bold mb-6">Entrar</h2>
         <form method="POST" action="{{ route('login') }}">
             @csrf
