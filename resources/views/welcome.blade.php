@@ -108,102 +108,205 @@
                             <textarea id="resumo" name="resumo"
                                 class="w-full border border-gray-600 rounded px-3 py-2"></textarea>
                         </div>
+                        <div class="w-8/12">
+                            <p class="font-montagu text-base mb-1">experiência profissional</p>
+                            <div class="font-montagu cursor-pointer flex items-center gap-1">
+                                <span class="text-xl cursor-pointer">+</span>
+                                <button type="button" onclick="openModal()" class="cursor-pointer">adicionar
+                                    experiência</button>
+                            </div>
+                            <!-- Lista de Experiências -->
+                            <div id="experienciasList" class="mt-2 space-y-4"></div>
+                        </div>
+                    </div>
+                </section>
+                <section class="mt-3">
+                    <p class="font-libre">Selecione o template de currículo que deseja: </p>
+                    <div class="flex gap-10 mt-1 font-libre">
                         <div>
-                            <p class="font-montagu text-base">experiência profissional</p>
-                            <button>+ adicionar experiência</button>
+                            <input type="radio" name="template" id="ats" value="ats" checked>
+                            <label for="ats">ATS</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="template" id="criativo" value="criativo">
+                            <label for="criativo">Criativo</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="template" id="europeu" value="europeu">
+                            <label for="europeu">Europeu</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="template" id="ia" value="ia">
+                            <label for="ia">IA</label>
                         </div>
                     </div>
 
+
                 </section>
+
             </form>
         </article>
     </main>
-</body>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const btnAddExperience = document.getElementById("btn-add-experience");
-        const experienceContainer = document.getElementById("experience-container");
-        const formacaoContainer = document.getElementById("formacao-container");
-        const btnAddformacao = document.getElementById("btn-add-formacao");
+    <!-- Modal corrigido -->
+    <div id="experienceModal" class="hidden fixed inset-0 z-50 flex items-center justify-center">
+        <div class="absolute inset-0 bg-black opacity-60" onclick="closeModal()"></div>
+        <div class="relative bg-white p-8 rounded-lg w-full max-w-2xl max-h-[90vh] overflow-y-auto mx-auto my-8">
+            <h3 class="text-2xl font-montagu mb-4">Adicionar Experiência Profissional</h3>
+            <form id="experienceForm" class="space-y-4">
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="relative">
+                        <input type="text" id="cargo" required
+                            class="peer w-full bg-transparent pb-2 pt-4 outline-none border-0 border-b border-black focus:ring-0" />
+                        <label for="cargo"
+                            class="absolute left-0 bottom-2 text-black transition-all duration-300 peer-focus:-translate-y-6 peer-focus:text-sm peer-focus:text-black peer-valid:-translate-y-6 peer-valid:text-sm peer-placeholder-shown:translate-y-0 font-montagu">
+                            Cargo
+                            <span class="text-red-500">*</span>
+                        </label>
+                    </div>
 
-        btnAddExperience.addEventListener("click", function () {
-            const newExperienceRow = document.createElement("div");
-            newExperienceRow.className = "flex flex-col sm:flex-row sm:space-x-2 mb-2";
+                    <div class="relative">
+                        <input type="text" id="empresa" required
+                            class="peer w-full bg-transparent pb-2 pt-4 outline-none border-0 border-b border-black focus:ring-0" />
+                        <label for="empresa"
+                            class="absolute left-0 bottom-2 text-black transition-all duration-300 peer-focus:-translate-y-6 peer-focus:text-sm peer-focus:text-black peer-valid:-translate-y-6 peer-valid:text-sm peer-placeholder-shown:translate-y-0 font-montagu">
+                            Empresa
+                            <span class="text-red-500">*</span>
+                        </label>
+                    </div>
+                </div>
 
-            newExperienceRow.innerHTML = `
-          <div class="w-full mt-4">
-            <label class="block font-medium mb-1">
-              cargo
-              <span class="text-red-600">*</span>
-            </label>
-            <input
-              type="text"
-              name="cargo[]"
-              class="block w-full border-b-2 border-black focus:outline-none focus:border-blue-500 py-1"
-              required
-            />
-          </div>
-          <div class="w-full mt-4">
-            <label class="block font-medium mb-1">
-              empresa
-              <span class="text-red-600">*</span>
-            </label>
-            <input
-              type="text"
-              name="empresa[]"
-              class="block w-full border-b-2 border-black focus:outline-none focus:border-blue-500 py-1"
-              required
-            />
-          </div>
-          <div class="w-full mt-4">
-            <label class="block font-medium mb-1">
-              ano
-              <span class="text-red-600">*</span>
-            </label>
-            <input
-              type="text"
-              name="ano[]"
-              class="block w-full border-b-2 border-black focus:outline-none focus:border-blue-500 py-1"
-              required
-            />
-          </div>
-        `;
-            experienceContainer.insertBefore(newExperienceRow, btnAddExperience);
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="relative">
+                        <label for="dataInicio" class="text-black font-montagu">
+                            Data de Início
+                            <span class="text-red-500">*</span>
+                        </label>
+                        <input type="month" id="dataInicio" required
+                            class="peer w-full bg-transparent outline-none border-0 border-b border-black focus:ring-0" />
+
+                    </div>
+
+                    <div id="dataFimContainer" class="relative">
+                        <label for="dataFim" class="text-black font-montagu">
+                            Data de Término
+                        </label>
+                        <input type="month" id="dataFim" required
+                            class="peer w-full bg-transparent outline-none border-0 border-b border-black focus:ring-0" />
+
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-2">
+                    <input type="checkbox" id="empregoAtual" class="w-4 h-4" onchange="toggleEndDate()" />
+                    <label for="empregoAtual" class="font-montagu">Este é meu emprego atual</label>
+                </div>
+
+                <div class="flex flex-col">
+                    <label for="descricaoExperiencia" class="text-black font-montagu">
+                        Descrição das Atividades
+                    </label>
+                    <textarea id="descricaoExperiencia" name="descricaoExperiencia"
+                        class="w-full border border-gray-600 rounded px-3 py-2" rows="5"></textarea>
+                </div>
+
+                <div class="flex justify-end gap-4 mt-6">
+                    <button type="button" onclick="closeModal()"
+                        class="font-montagu px-4 py-2 border border-black rounded cursor-pointer">Cancelar</button>
+                    <button type="submit"
+                        class="font-montagu px-4 py-2 bg-black text-white rounded cursor-pointer">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <script>
+        let experiences = [];
+
+        function openModal() {
+            document.getElementById('experienceModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('experienceModal').classList.add('hidden');
+            document.getElementById('experienceForm').reset();
+            document.getElementById('empregoAtual').checked = false;
+            toggleEndDate();
+        }
+
+        function toggleEndDate() {
+            const checkBox = document.getElementById('empregoAtual');
+            const endDate = document.getElementById('dataFim');
+            endDate.disabled = checkBox.checked;
+            if (checkBox.checked) {
+                document.getElementById('dataFimContainer').classList.add('hidden');
+                endDate.value = '';
+            } else {
+                document.getElementById('dataFimContainer').classList.remove('hidden');
+            }
+        }
+
+        document.getElementById('experienceForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const checkBox = document.getElementById('empregoAtual');
+            const endDate = document.getElementById('dataFim');
+
+            // Validação condicional
+            if (!checkBox.checked && !endDate.value) {
+                alert('Por favor, preencha a data de término ou marque "Este é meu emprego atual"');
+                return;
+            }
+
+            const experience = {
+                cargo: document.getElementById('cargo').value,
+                empresa: document.getElementById('empresa').value,
+                dataInicio: document.getElementById('dataInicio').value,
+                dataFim: checkBox.checked ? 'Atual' : document.getElementById('dataFim').value,
+                empregoAtual: checkBox.checked,
+                descricao: document.getElementById('descricaoExperiencia').value
+            };
+
+            experiences.push(experience);
+            renderExperiences();
+            closeModal();
         });
 
-        btnAddformacao.addEventListener("click", function () {
-            const newEformacaoRow = document.createElement("div");
-            newEformacaoRow.className = "flex flex-col sm:flex-row sm:space-x-2 mb-2";
-            newEformacaoRow.innerHTML = `
-          <div class="w-full mt-4">
-            <label class="block font-medium mb-1">
-              formacao
-              <span class="text-red-600">*</span>
-            </label>
-            <input
-              type="text"
-              name="formacao[]"
-              class="block w-full border-b-2 border-black focus:outline-none focus:border-blue-500 py-1"
-              required
-            />
-          </div>
-          <div class="w-full mt-4">
-            <label class="block font-medium mb-1">
-              ano
-              <span class="text-red-600">*</span>
-            </label>
-            <input
-              type="text"
-              name="ano-formacao[]"
-              class="block w-full border-b-2 border-black focus:outline-none focus:border-blue-500 py-1"
-              required
-            />
-          </div>
-        `;
-            formacaoContainer.insertBefore(newEformacaoRow, btnAddformacao);
-        })
-    });
-</script>
+        function renderExperiences() {
+            const list = document.getElementById('experienciasList');
+            list.innerHTML = '';
+            experiences.sort((a, b) => new Date(b.dataInicio) - new Date(a.dataInicio));
+
+            experiences.forEach((exp, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-black pl-4 py-2 mb-4';
+                div.innerHTML = `
+                <h4 class="font-montagu font-bold">${exp.cargo}</h4>
+                <p class="font-montagu">${exp.empresa}</p>
+                <p class="text-sm text-gray-600">
+                    ${formatDate(exp.dataInicio)} - ${exp.empregoAtual ? 'Atual' : formatDate(exp.dataFim)}
+                </p>
+                <p class="mt-2 text-gray-700">${exp.descricao}</p>
+                <button onclick="deleteExperience(${index})"
+                    class="text-red-500 text-sm mt-2 hover:text-red-700 cursor-pointer">
+                    Remover
+                </button>
+            `;
+                list.appendChild(div);
+            });
+        }
+
+        function formatDate(dateString) {
+            if (!dateString) return '';
+            const date = new Date(dateString);
+            return date.toLocaleDateString('pt-BR', { month: '2-digit', year: 'numeric' });
+        }
+
+        function deleteExperience(index) {
+            experiences.splice(index, 1);
+            renderExperiences();
+        }
+    </script>
 </body>
 
 </html>
