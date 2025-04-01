@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Tela de Login - inClusio</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body class="min-h-screen bg-white flex flex-col">
 
@@ -63,6 +64,33 @@
 <footer class="p-4 text-right">
     <span class="text-sm">.inC</span>
 </footer>
+@if(session('errors'))
+    @php
+        $errorsstring = '';
+    @endphp
+    @foreach(session('errors')->getBag('default')->getMessages() as $error)
+        @php
+            $errorsstring .= $error[0]
+        @endphp
+    @endforeach
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: '{{ $errorsstring }}'
+            });
+        </script>
+@endif
 
+@if(session('error'))
+
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: '{{ session('error') }}'
+        });
+    </script>
+@endif
 </body>
 </html>
