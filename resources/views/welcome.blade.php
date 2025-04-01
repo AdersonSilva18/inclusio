@@ -236,7 +236,7 @@
                             class="peer w-full bg-transparent pb-2 pt-4 outline-none border-0 border-b border-black focus:ring-0" />
                         <label for="grau"
                             class="absolute left-0 bottom-2 text-black transition-all duration-300 peer-focus:-translate-y-6 peer-focus:text-sm peer-focus:text-black peer-valid:-translate-y-6 peer-valid:text-sm peer-placeholder-shown:translate-y-0 font-montagu">
-                            Grau
+                            Curso
                             <span class="text-red-500">*</span>
                         </label>
                     </div>

@@ -13,6 +13,9 @@ class PdfGeneratorController extends Controller
     {
         $data =  $request->all();
 
+        $data['educations'] = json_decode($request->input('educations'), true);
+        $data['experiences'] = json_decode($request->input('experiences'), true);
+
         $document = Document::create([
             'nome' => "Document Ats ".date('Y-m-d H:i:s'),
         ]);

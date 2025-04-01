@@ -27,38 +27,30 @@
 
     <section class="mb-6">
         <h2 class="text-lg font-semibold mb-2">Experiência Profissional</h2>
+        @foreach($experiencias as $experiencia)
+            <article class="mb-4">
+                <h3 class="font-bold text-sm">{{$experiencia['cargo']}} | {{$experiencia['empresa']}}</h3>
+                <p class="text-gray-600 text-xs">Período: {{$experiencia['dataInicio']}} - {{$experiencia['dataFim']}}</p>
+                <ul class="list-disc list-inside text-gray-700 text-sm space-y-1 mt-1">
+                    <li>{{$experiencia['descricao']}}</li>
+                </ul>
+            </article>
 
-        <article class="mb-4">
-            <h3 class="font-bold text-sm">Cargo | Empresa X</h3>
-            <p class="text-gray-600 text-xs">Período: 2021 - Atual</p>
-            <ul class="list-disc list-inside text-gray-700 text-sm space-y-1 mt-1">
-                <li>Responsável por [atividade principal].</li>
-                <li>Conquista/resultado que demonstre impacto (ex.: aumentou em 20%...).</li>
-                <li>Ferramentas utilizadas (ex.: React, Node.js, GIT...).</li>
-            </ul>
-        </article>
-
-        <article class="mb-4">
-            <h3 class="font-bold text-sm">Cargo | Empresa Y</h3>
-            <p class="text-gray-600 text-xs">Período: 2019 - 2021</p>
-            <ul class="list-disc list-inside text-gray-700 text-sm space-y-1 mt-1">
-                <li>Principais atividades, responsabilidades e resultados obtidos.</li>
-                <li>Métricas ou conquistas relevantes (ex.: redução de custos, otimização...).</li>
-                <li>Principais *soft skills* desenvolvidas (ex.: comunicação, trabalho em equipe).</li>
-            </ul>
-        </article>
+        @endforeach
     </section>
 
     <section class="mb-6">
         <h2 class="text-lg font-semibold mb-2">Formação Acadêmica</h2>
+        @foreach($educations as $educacaoItem)
+            <article class="mb-4">
+                <h3 class="font-bold text-sm">{{$educacaoItem['grau']}} | {{$educacaoItem['instituicao']}}</h3>
+                <p class="text-gray-600 text-xs">Período: {{$educacaoItem['dataInicio']}} - {{$educacaoItem['dataFim']}}</p>
+                <p class="text-gray-700 text-sm mt-1">
+                    {{$educacaoItem['descricao']}}
+                </p>
+            </article>
 
-        <article class="mb-4">
-            <h3 class="font-bold text-sm">Curso Superior | Instituição XYZ</h3>
-            <p class="text-gray-600 text-xs">Período: 2016 - 2020 (ou previsão de conclusão)</p>
-            <p class="text-gray-700 text-sm mt-1">
-                Descrição breve (ex.: área de estudo, TCC ou projetos relevantes).
-            </p>
-        </article>
+        @endforeach
     </section>
 </div>
 </body>
