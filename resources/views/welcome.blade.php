@@ -84,7 +84,7 @@
             <form action="">
                 <section class="flex flex-row space-x-4">
                     <div class="relative my-5 w-80">
-                        <input type="text" id="nome" required
+                        <input type="text" name="nome" id="nome" required
                             class="peer w-full bg-transparent pb-2 pt-4 outline-none border-0 border-b border-black focus:ring-0" />
                         <label for="nome" class="absolute left-0 bottom-2 text-black transition-all duration-300
            peer-focus:-translate-y-6 peer-focus:text-sm peer-focus:text-black
@@ -96,7 +96,7 @@
               transition-transform duration-300 peer-focus:scale-x-100"></div>
                     </div>
                     <div class="relative my-5 w-72">
-                        <input type="email" id="email" required
+                        <input type="email" name="email" id="email" required
                             class="peer  w-full bg-transparent pb-2 pt-4 outline-none border-0 border-b border-black focus:ring-0" />
                         <label for="email" class="absolute left-0 bottom-2 text-black transition-all duration-300
            peer-focus:-translate-y-6 peer-focus:text-sm peer-focus:text-black
@@ -108,7 +108,7 @@
               transition-transform duration-300 peer-focus:scale-x-100"></div>
                     </div>
                     <div class="relative my-5 w-52">
-                        <input type="tel" id="telefone" required
+                        <input type="tel" name="telefone" id="telefone" required
                             class="peer  w-full bg-transparent pb-2 pt-4 outline-none border-0 border-b border-black focus:ring-0" />
                         <label for="telefone" class="absolute left-0 bottom-2 text-black transition-all duration-300
            peer-focus:-translate-y-6 peer-focus:text-sm peer-focus:text-black
@@ -121,7 +121,7 @@
 
                     </div>
                     <div class="relative my-5 w-52">
-                        <input type="text" id="estado" required
+                        <input type="text" name="estado" id="estado" required
                             class="peer  w-full bg-transparent pb-2 pt-4 outline-none border-0 border-b border-black focus:ring-0" />
                         <label for="estado" class="absolute left-0 bottom-2 text-black transition-all duration-300
            peer-focus:-translate-y-6 peer-focus:text-sm peer-focus:text-black
@@ -133,7 +133,7 @@
               transition-transform duration-300 peer-focus:scale-x-100"></div>
                     </div>
                     <div class="relative my-5 w-52">
-                        <input type="text" id="cidade" required
+                        <input type="text" name="cidade" id="cidade" required
                             class="peer  w-full bg-transparent pb-2 pt-4 outline-none border-0 border-b border-black focus:ring-0" />
                         <label for="cidade" class="absolute left-0 bottom-2 text-black transition-all duration-300
            peer-focus:-translate-y-6 peer-focus:text-sm peer-focus:text-black
