@@ -53,7 +53,7 @@
 
                                     <x-dropdown-link :href="route('logout')"
                                         onclick="event.preventDefault();
-                                                                                            this.closest('form').submit();">
+                                                                                                                this.closest('form').submit();">
                                         {{ __('Sair') }}
                                     </x-dropdown-link>
                                 </form>
@@ -148,15 +148,53 @@
                     </div>
                 </section>
                 <section>
-                    <div class="flex gap-36">
-                        <div class="flex flex-col w-4/12">
-                            <label for="resumo" class="text-black font-montagu">
-                                resumo profissional
-                            </label>
-                            <textarea id="resumo" name="resumo" class="w-full border border-gray-600 rounded px-3 py-2"
-                                rows="5"></textarea>
+                    <div class="flex gap-48">
+                        <div class="flex flex-col w-5/12">
+                            <div class="flex flex-col">
+                                <label for="resumo" class="text-black font-montagu">
+                                    resumo profissional
+                                </label>
+                                <textarea id="resumo" name="resumo"
+                                    class="w-full border border-gray-600 rounded px-3 py-2" rows="5"></textarea>
+                            </div>
+                            <section class="mt-4">
+                                <p class="font-montagu text-base mb-1">formações educacionais</p>
+                                <div class="font-montagu cursor-pointer flex items-center gap-1">
+                                    <span class="text-xl cursor-pointer">+</span>
+                                    <button type="button" onclick="openEducationModal()"
+                                        class="cursor-pointer">adicionar
+                                        formação</button>
+                                </div>
+                                <!-- Lista de Formações -->
+                                <div id="educationsList" class="mt-2 space-y-4 w-full"></div>
+                            </section>
+
+                            <section class="mt-3">
+                                <p class="font-libre">Selecione o template de currículo que deseja: </p>
+                                <div class="flex gap-10 mt-1 font-libre">
+                                    <div class="cursor-pointer">
+                                        <input type="radio" name="template" id="ats" value="ats" checked
+                                            class="accent-black">
+                                        <label for="ats" class="cursor-pointer">ATS</label>
+                                    </div>
+                                    <div class="cursor-pointer">
+                                        <input type="radio" name="template" id="criativo" value="criativo"
+                                            class="accent-black">
+                                        <label for="criativo" class="cursor-pointer">Criativo</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" name="template" id="europeu" value="europeu"
+                                            class="accent-black">
+                                        <label for="europeu" class="cursor-pointer">Europeu</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" name="template" id="ia" value="ia" class="accent-black">
+                                        <label for="ia" class="cursor-pointer">IA</label>
+                                    </div>
+                                </div>
+                            </section>
                         </div>
-                        <div class="w-8/12">
+                        <div class="w-7/12"> <!-- Ajuste de width -->
                             <p class="font-montagu text-base mb-1">experiência profissional</p>
                             <div class="font-montagu cursor-pointer flex items-center gap-1">
                                 <span class="text-xl cursor-pointer">+</span>
@@ -164,42 +202,12 @@
                                     experiência</button>
                             </div>
                             <!-- Lista de Experiências -->
-                            <div id="experienciasList" class="mt-2 space-y-4"></div>
+                            <div id="experienciasList" class="mt-2 space-y-4 w-full"></div>
+                            <!-- Alterado para w-full -->
                         </div>
                     </div>
-                </section>
-                <section class="mt-4">
-                    <p class="font-montagu text-base mb-1">formações educacionais</p>
-                    <div class="font-montagu cursor-pointer flex items-center gap-1">
-                        <span class="text-xl cursor-pointer">+</span>
-                        <button type="button" onclick="openEducationModal()" class="cursor-pointer">adicionar
-                            formação</button>
-                    </div>
-                    <!-- Lista de Formações -->
-                    <div id="educationsList" class="mt-2 space-y-4 w-1/2"></div>
                 </section>
 
-                <section class="mt-3">
-                    <p class="font-libre">Selecione o template de currículo que deseja: </p>
-                    <div class="flex gap-10 mt-1 font-libre">
-                        <div class="cursor-pointer">
-                            <input type="radio" name="template" id="ats" value="ats" checked class="accent-black">
-                            <label for="ats" class="cursor-pointer">ATS</label>
-                        </div>
-                        <div class="cursor-pointer">
-                            <input type="radio" name="template" id="criativo" value="criativo" class="accent-black">
-                            <label for="criativo" class="cursor-pointer">Criativo</label>
-                        </div>
-                        <div>
-                            <input type="radio" name="template" id="europeu" value="europeu" class="accent-black">
-                            <label for="europeu" class="cursor-pointer">Europeu</label>
-                        </div>
-                        <div>
-                            <input type="radio" name="template" id="ia" value="ia" class="accent-black">
-                            <label for="ia" class="cursor-pointer">IA</label>
-                        </div>
-                    </div>
-                </section>
 
                 <input type="submit" value="Criar Currículo"
                     class="mt-5 bg-black text-white font-montagu px-4 py-2 mb-5 rounded cursor-pointer" />
@@ -435,14 +443,17 @@
 
             educations.forEach((edu, index) => {
                 const div = document.createElement('div');
-                div.className = 'border-l-4 border-black pl-4 py-2 mb-4';
+                div.className = 'border-l-4 border-black pl-4 py-2 mb-4 w-8/12';
                 div.innerHTML = `
             <h4 class="font-montagu font-bold">${edu.grau}</h4>
             <p class="font-montagu">${edu.instituicao}</p>
             <p class="text-sm text-gray-600">
                 ${formatDate(edu.dataInicio)} - ${edu.cursando ? 'Cursando' : formatDate(edu.dataFim)}
             </p>
-            ${edu.descricao ? `<p class="mt-2 text-gray-700">${edu.descricao}</p>` : ''}
+            ${edu.descricao ? `
+                <p class="mt-2 text-gray-700 break-words">
+                    ${edu.descricao}
+                </p>` : ''}
             <button onclick="deleteEducation(${index})"
                 class="text-red-500 text-sm mt-2 hover:text-red-700 cursor-pointer">
                 Remover
@@ -482,32 +493,6 @@
             }
         }
 
-        // document.getElementById('experienceForm').addEventListener('submit', (e) => {
-        //     e.preventDefault();
-
-        //     const checkBox = document.getElementById('empregoAtual');
-        //     const endDate = document.getElementById('dataFim');
-
-        //     // Validação condicional
-        //     if (!checkBox.checked && !endDate.value) {
-        //         alert('Por favor, preencha a data de término ou marque "Este é meu emprego atual"');
-        //         return;
-        //     }
-
-        //     const experience = {
-        //         cargo: document.getElementById('cargo').value,
-        //         empresa: document.getElementById('empresa').value,
-        //         dataInicio: document.getElementById('dataInicio').value,
-        //         dataFim: checkBox.checked ? 'Atual' : document.getElementById('dataFim').value,
-        //         empregoAtual: checkBox.checked,
-        //         descricao: document.getElementById('descricaoExperiencia').value
-        //     };
-
-        //     experiences.push(experience);
-        //     renderExperiences();
-        //     closeModal();
-        // });
-
         function renderExperiences() {
             const list = document.getElementById('experienciasList');
             list.innerHTML = '';
@@ -515,19 +500,21 @@
 
             experiences.forEach((exp, index) => {
                 const div = document.createElement('div');
-                div.className = 'border-l-4 border-black pl-4 py-2 mb-4';
+                div.className = 'border-l-4 border-black pl-4 py-2 mb-4 w-8/12';
                 div.innerHTML = `
-                <h4 class="font-montagu font-bold">${exp.cargo}</h4>
-                <p class="font-montagu">${exp.empresa}</p>
-                <p class="text-sm text-gray-600">
-                    ${formatDate(exp.dataInicio)} - ${exp.empregoAtual ? 'Atual' : formatDate(exp.dataFim)}
-                </p>
-                <p class="mt-2 text-gray-700">${exp.descricao}</p>
-                <button onclick="deleteExperience(${index})"
-                    class="text-red-500 text-sm mt-2 hover:text-red-700 cursor-pointer">
-                    Remover
-                </button>
-            `;
+            <h4 class="font-montagu font-bold">${exp.cargo}</h4>
+            <p class="font-montagu">${exp.empresa}</p>
+            <p class="text-sm text-gray-600">
+                ${formatDate(exp.dataInicio)} - ${exp.empregoAtual ? 'Atual' : formatDate(exp.dataFim)}
+            </p>
+            <p class="mt-2 text-gray-700 break-words w-full">
+                ${exp.descricao}
+            </p>
+            <button onclick="deleteExperience(${index})"
+                class="text-red-500 text-sm mt-2 hover:text-red-700 cursor-pointer">
+                Remover
+            </button>
+        `;
                 list.appendChild(div);
             });
         }
