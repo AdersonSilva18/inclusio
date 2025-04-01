@@ -27,7 +27,7 @@
 
     <section class="mb-6">
         <h2 class="text-lg font-semibold mb-2">Experiência Profissional</h2>
-        @foreach($experiencias as $experiencia)
+        @foreach($experiences as $experiencia)
             <article class="mb-4">
                 <h3 class="font-bold text-sm">{{$experiencia['cargo']}} | {{$experiencia['empresa']}}</h3>
                 <p class="text-gray-600 text-xs">Período: {{$experiencia['dataInicio']}} - {{$experiencia['dataFim']}}</p>
