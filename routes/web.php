@@ -8,7 +8,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::get('/generate-pdf', [PdfGeneratorController::class, 'generatePdf'])->name('generate.pdf');
+Route::post('/generate-pdf', [PdfGeneratorController::class, 'generatePdf'])->name('generate.pdf');
 
 Route::get('/dashboard', function () {
     return redirect()->route('home');

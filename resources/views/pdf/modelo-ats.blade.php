@@ -8,12 +8,12 @@
 <body class="bg-gray-100 flex justify-center px-4 py-6">
 <div class="bg-white w-full max-w-2xl p-6 rounded shadow-lg">
     <header class="mb-6">
-        <h1 class="text-2xl font-bold">Seu Nome Completo</h1>
+        <h1 class="text-2xl font-bold">{{$nome ?? ''}}</h1>
         <p class="text-gray-700 mt-1">Profissão / Área de Atuação</p>
         <div class="mt-2 text-gray-700 text-sm">
-            <p><strong>E-mail:</strong> seuemail@exemplo.com</p>
-            <p><strong>Telefone:</strong> (XX) XXXXX-XXXX</p>
-            <p><strong>Cidade/Estado:</strong> Sua Cidade - Estado</p>
+            <p><strong>E-mail:</strong> {{$email ?? ''}}</p>
+            <p><strong>Telefone:</strong> {{$telefone ?? ''}}</p>
+            <p><strong>Cidade/Estado:</strong> {{$cidade ?? ''}} - {{$estado ?? ''}}</p>
 {{--            <p><strong>LinkedIn:</strong> linkedin.com/in/seu-perfil</p>--}}
         </div>
     </header>
@@ -21,21 +21,8 @@
     <section class="mb-6">
         <h2 class="text-lg font-semibold mb-2">Resumo Profissional</h2>
         <p class="text-gray-700 text-sm leading-relaxed">
-            Profissional com X anos de experiência em [área de atuação], incluindo [habilidades-chave].
-            Experiência em empresas de pequeno, médio e grande porte, responsável por [principais atribuições].
-            Busca oportunidades para aplicar conhecimentos em [ferramentas/tecnologias relevantes] e contribuir
-            para o crescimento da organização.
+            {{$resumo ?? ''}}
         </p>
-    </section>
-
-    <section class="mb-6">
-        <h2 class="text-lg font-semibold mb-2">Habilidades</h2>
-        <ul class="list-disc list-inside text-gray-700 text-sm space-y-1">
-            <li>Habilidade 1 (ex.: HTML, CSS, JavaScript)</li>
-            <li>Habilidade 2 (ex.: Frameworks, Ferramentas, Soft Skills)</li>
-            <li>Habilidade 3 (ex.: Liderança de Equipes, Scrum)</li>
-            <li>Habilidade 4 (ex.: Inglês Avançado, Espanhol Básico)</li>
-        </ul>
     </section>
 
     <section class="mb-6">

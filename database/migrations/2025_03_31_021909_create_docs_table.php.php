@@ -10,9 +10,9 @@ return new class extends Migration
     {
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
-            $table->string('nome');
-            $table->unsignedBigInteger('user_id');
-            $table->string('path');
+            $table->string('nome')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->string('path')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')
