@@ -82,7 +82,8 @@
                 informações para a criação do seu mais novo currículo digital</p>
         </section>
         <article>
-            <form id="mainForm" action="">
+            <form method="POST" id="mainForm" action="{{ route('generate.pdf') }}">
+                @csrf
                 <section class="flex flex-row space-x-4">
                     <div class="relative my-5 w-80">
                         <input type="text" name="nome" id="nome" required
