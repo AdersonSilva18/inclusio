@@ -529,6 +529,36 @@
             experiences.splice(index, 1);
             renderExperiences();
         }
+
+        let mainform = document.getElementById('mainForm');
+
+        function updateHiddenInputs() {
+            let hiddenEducations = document.getElementById('educationsHidden');
+            let hiddenExperiences = document.getElementById('experiencesHidden');
+
+            if (hiddenEducations) hiddenEducations.remove();
+            if (hiddenExperiences) hiddenExperiences.remove();
+
+            hiddenEducations = document.createElement('input');
+            hiddenEducations.type = 'hidden';
+            hiddenEducations.name = 'educations';
+            hiddenEducations.id = 'educationsHidden';
+            hiddenEducations.value = JSON.stringify(educations);
+
+            hiddenExperiences = document.createElement('input');
+            hiddenExperiences.type = 'hidden';
+            hiddenExperiences.name = 'experiences';
+            hiddenExperiences.id = 'experiencesHidden';
+            hiddenExperiences.value = JSON.stringify(experiences);
+
+            mainform.appendChild(hiddenEducations);
+            mainform.appendChild(hiddenExperiences);
+        }
+
+        mainform.addEventListener('submit', function(event) {
+            updateHiddenInputs();
+        });
+
     </script>
 </body>
 
