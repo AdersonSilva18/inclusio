@@ -9,7 +9,7 @@
 <div class="bg-white w-full max-w-2xl p-6 rounded shadow-lg">
     <header class="mb-6">
         <h1 class="text-2xl font-bold">{{$nome ?? ''}}</h1>
-        <p class="text-gray-700 mt-1">Profissão / Área de Atuação</p>
+        <p class="text-gray-700 mt-1">{{$experiences[0]['cargo']}}</p>
         <div class="mt-2 text-gray-700 text-sm">
             <p><strong>E-mail:</strong> {{$email ?? ''}}</p>
             <p><strong>Telefone:</strong> {{$telefone ?? ''}}</p>
